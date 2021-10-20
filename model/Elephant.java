@@ -32,7 +32,6 @@ public class Elephant extends Player {
         status = "The " + getName() + " fills its " + waterContainer + " with water from the pond.";
         setCurrentWater(WATER_CAPACITY);
         setHasWater(true);
-        WaterGame.getWaterGame().setScore(750);
         
     }
 
@@ -42,7 +41,6 @@ public class Elephant extends Player {
         status = getName() + " empties its " + waterContainer + " into the tank and the water rises higher.";
         setCurrentWater(0);
         setHasWater(false);
-        WaterGame.getWaterGame().setScore(3000);
         
     }
 

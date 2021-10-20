@@ -1,6 +1,6 @@
 package model;
 
-public interface IWaterRetrieval {
+public interface IWaterHandler {
 
     void fillWater();
 

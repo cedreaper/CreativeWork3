@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Player implements IWaterRetrieval {
+public abstract class Player implements IWaterHandler {
 
     private int x;
     private int y;
@@ -34,7 +34,7 @@ public abstract class Player implements IWaterRetrieval {
     }
 
     public int getCurrentWater() {
-        
+
         return currentWater;
     }
 

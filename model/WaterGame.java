@@ -10,7 +10,7 @@ public class WaterGame {
     private int currentWaterLvl;
     private int timeRemaining;
 
-    private int score;
+    private static int score;
 
     private String container = "Water Tank";
 
@@ -50,7 +50,7 @@ public class WaterGame {
         return currentWaterLvl;
     }
 
-    public int getScore() {
+    public static int getScore() {
         return score;
     }
 
@@ -62,7 +62,7 @@ public class WaterGame {
         this.currentWaterLvl = currentWaterLvl;
     }
 
-    public void setScore(int score) {
+    public static void setScore(int score) {
         score += score;
     }
 
@@ -75,8 +75,6 @@ public class WaterGame {
     }
 
     public static WaterGame getWaterGame() {
-
-        //only want to have 1 object created ever only
 
         if(game == null) {
 

@@ -1,7 +1,8 @@
 package test;
 
 import model.Elephant;
-import model.WaterGame;
+import model.Human;
+
 
 public class WaterGameTest {
 
@@ -10,13 +11,33 @@ public class WaterGameTest {
         //testing purposes of the models
 
         Elephant ele = new Elephant(50, 50, 100, 100, 2, "Elephant", false);
+        Human hum = new Human(75, 75, 70, 70, 2, "Human", false, "male");
+
+
         ele.fillWater();
 
+        assert ele.getCurrentWater() == ele.getWaterCapacity();
         assert ele.getHasWater();
-        System.out.println(WaterGame.getWaterGame().getScore());
-        assert WaterGame.getWaterGame().getScore() == 750;
 
-        //assert game.getScore() == 3750;
+        
+        ele.depositWater();
+
+        assert !ele.getHasWater();
+
+        assert ele.getCurrentWater() == 0;
+
+        hum.fillWater();
+
+        assert hum.getHasWater();
+
+        assert hum.getCurrentWater() == hum.getCapacity();
+
+        hum.depositWater();
+
+        assert !hum.getHasWater();
+
+        assert hum.getCurrentWater() == 0;
+
     }
   
 
