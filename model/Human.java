@@ -44,7 +44,7 @@ public class Human extends Player {
         status = getName() + " fills " + waterContainer + " with water from the pond.";
         setCurrentWater(WATER_CAPACITY);
         setHasWater(true);
-        WaterGame.setScore(250);
+        WaterGame.getWaterGame().setScore(250);
         
         
     }
@@ -55,7 +55,7 @@ public class Human extends Player {
         status = getName() + " empties " + waterContainer + " into the tank and the water rises.";
         setCurrentWater(0);
         setHasWater(false);
-        WaterGame.setScore(1000);
+        WaterGame.getWaterGame().setScore(1000);
         
     }
 
