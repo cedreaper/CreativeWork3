@@ -2,7 +2,6 @@ package model;
 
 public class WaterGame {
 
-    private static WaterGame game;
 
     private final int MAX_CAPACITY = 12;
     private final int MAX_TIME = 100000;
@@ -10,11 +9,10 @@ public class WaterGame {
     private int currentWaterLvl;
     private int timeRemaining;
 
-    private static int score;
+    private int score;
 
-    private String container = "Water Tank";
 
-    private WaterGame() {
+    public WaterGame() {
 
         timeRemaining = MAX_TIME;
         currentWaterLvl = 0;
@@ -50,7 +48,7 @@ public class WaterGame {
         return currentWaterLvl;
     }
 
-    public static int getScore() {
+    public int getScore() {
         return score;
     }
 
@@ -74,14 +72,8 @@ public class WaterGame {
         return MAX_TIME;
     }
 
-    public static WaterGame getWaterGame() {
-
-        if(game == null) {
-
-            game = new WaterGame();
-        }
-
-        return game;
+    public int getMAX_CAPACITY() {
+        return MAX_CAPACITY;
     }
 
     

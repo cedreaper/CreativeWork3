@@ -1,5 +1,10 @@
 package model;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+
 public abstract class Player implements IWaterHandler {
 
     private int x;
@@ -10,6 +15,7 @@ public abstract class Player implements IWaterHandler {
     private int speed;
     private String name;
     private boolean hasWater;
+    private BufferedImage image;
     
 
     public Player(int x, int y, int width, int height, int speed, String name, boolean hasWater) {
@@ -89,6 +95,40 @@ public abstract class Player implements IWaterHandler {
 
     public int getSpeed() {
         return speed;
+    }
+
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
+
+    public Rectangle getBoundingBox() {
+
+        return new Rectangle(x, y, image.getWidth(), image.getHeight());        
+    }
+
+    public void translate( int dx, int dy) {
+
+        x += dx;
+        y += dy;
+    }
+
+    public void render(Graphics2D g2) {
+        
+        String carryingWater = "Empty";
+
+        if(hasWater) {
+
+            carryingWater = "Full";
+        }
+
+        g2.drawImage(getImage(), null, getX(), getY());
+        g2.setColor(Color.white);
+        g2.drawString("| Water: " + carryingWater + " |", getX(), getY());
+        
     }
 
 

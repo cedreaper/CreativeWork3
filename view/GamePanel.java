@@ -11,6 +11,12 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
 
+import model.Elephant;
+import model.Human;
+import model.Player;
+import model.WaterGame;
+import model.images.ImageStore;
+
 public class GamePanel {
 
 
@@ -23,6 +29,9 @@ public class GamePanel {
     private JFrame window;
 
     private GameCanvas canvas;
+
+    private WaterGame game = new WaterGame();
+    private Player player;
 
     private JButton fillButton = new JButton("Fill");
     private JButton exitButton = new JButton("Exit");
@@ -43,6 +52,8 @@ public class GamePanel {
     }
 
     public void init() {
+
+
 
         Container cp = window.getContentPane();
 
@@ -101,6 +112,30 @@ public class GamePanel {
 
         canvas = new GameCanvas(this);
 
+        if(radioHuman.isSelected()) {
+            // if we selected human, now we need a gender..
+
+            if(radioFemale.isSelected()) {
+
+                //create female
+                //use dynamic binding
+                player = new Human(300, 150, 70, 70, 5, "Sarah", false, "female");
+                player.setImage(ImageStore.woman);
+            }
+            else {
+                // create male with dynamic binding otherwise
+                player = new Human(300, 150, 70, 70, 5, "Abel", false, "male");
+                player.setImage(ImageStore.man);
+            }
+        }
+        else {
+
+            //if not human, then what else could we be.. an elephant..
+            player = new Elephant(300, 150, 150, 70, 2, "Elephant", false);
+            player.setImage(ImageStore.elephant);
+
+        }
+
 
         cp.add(BorderLayout.CENTER, canvas);
         cp.add(BorderLayout.SOUTH, southPanel);
@@ -149,6 +184,19 @@ public class GamePanel {
     public JFrame getWindow() {
         return window;
     }
+
+    public WaterGame getGame() {
+        return game;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
 
     
 }
