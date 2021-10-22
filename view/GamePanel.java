@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
 
+import controller.MainListener;
 import model.Elephant;
 import model.Human;
 import model.Player;
@@ -30,8 +31,12 @@ public class GamePanel {
 
     private GameCanvas canvas;
 
-    private WaterGame game = new WaterGame();
+    private WaterGame game;
     private Player player;
+
+    private Elephant e1 = new Elephant(300, 150, 150, 70, 5, "Elephant", false);
+    private Human h1 = new Human(300, 150, 70, 70, 10, "Abel", false, "male");
+    private Human h2 = new Human(300, 150, 70, 70, 10, "Sarah", false, "female");
 
     private JButton fillButton = new JButton("Fill");
     private JButton exitButton = new JButton("Exit");
@@ -112,29 +117,22 @@ public class GamePanel {
 
         canvas = new GameCanvas(this);
 
-        if(radioHuman.isSelected()) {
-            // if we selected human, now we need a gender..
+    
 
-            if(radioFemale.isSelected()) {
+        MainListener listener = new MainListener(this);
 
-                //create female
-                //use dynamic binding
-                player = new Human(300, 150, 70, 70, 5, "Sarah", false, "female");
-                player.setImage(ImageStore.woman);
-            }
-            else {
-                // create male with dynamic binding otherwise
-                player = new Human(300, 150, 70, 70, 5, "Abel", false, "male");
-                player.setImage(ImageStore.man);
-            }
-        }
-        else {
-
-            //if not human, then what else could we be.. an elephant..
-            player = new Elephant(300, 150, 150, 70, 2, "Elephant", false);
-            player.setImage(ImageStore.elephant);
-
-        }
+        exitButton.addActionListener(listener);
+        exitButton.setFocusable(false);
+        depositButton.addActionListener(listener);
+        depositButton.setFocusable(false);
+        fillButton.addActionListener(listener);
+        fillButton.setFocusable(false);
+        startButton.addActionListener(listener);
+        startButton.setFocusable(false);
+        
+        canvas.addKeyListener(listener);
+        canvas.requestFocusInWindow();
+        canvas.setFocusable(true);
 
 
         cp.add(BorderLayout.CENTER, canvas);
@@ -195,6 +193,42 @@ public class GamePanel {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public void setState(GameState state) {
+        this.state = state;
+    }
+
+    public void disableRadioButtons() {
+
+        radioElephant.setEnabled(false);
+        radioFemale.setEnabled(false);
+        radioMale.setEnabled(false);
+        radioHuman.setEnabled(false);
+    }
+
+    public void enableRadioButtons() {
+
+        radioElephant.setEnabled(true);
+        radioFemale.setEnabled(true);
+        radioMale.setEnabled(true);
+        radioHuman.setEnabled(true);
+    }
+
+    public Elephant getE1() {
+        return e1;
+    }
+
+    public Human getH1() {
+        return h1;
+    }
+
+    public Human getH2() {
+        return h2;
+    }
+
+    public void setGame(WaterGame game) {
+        this.game = game;
     }
 
 

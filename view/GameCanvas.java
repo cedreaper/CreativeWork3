@@ -64,6 +64,30 @@ public class GameCanvas extends JPanel {
         }
         else if(state.equals(GameState.PLAYING)) {
 
+            if(panel.getRadioHuman().isSelected()) {
+                // if we selected human, now we need a gender..
+    
+                if(panel.getRadioFemale().isSelected()) {
+    
+                    //create female
+                    //use dynamic binding
+                    panel.setPlayer(panel.getH2());
+                    panel.getPlayer().setImage(ImageStore.woman);
+                }
+                else {
+                    // create male with dynamic binding otherwise
+                    panel.setPlayer(panel.getH1());
+                    panel.getPlayer().setImage(ImageStore.man);
+                }
+            }
+            else {
+    
+                //if not human, then what else could we be.. an elephant..
+                panel.setPlayer(panel.getE1());
+                panel.getPlayer().setImage(ImageStore.elephant);
+    
+            }
+
             setBackground(Color.black);
 
             g2.setColor(Color.blue);
@@ -97,7 +121,7 @@ public class GameCanvas extends JPanel {
            
            //water bar
            g2.setColor(Color.blue);
-           for(int i = 0; i < panel.getGame().getMAX_CAPACITY(); i++) {
+           for(int i = 0; i < panel.getGame().getCurrentWaterLvl(); i++) {
 
             g2.fillRect(300, 30, 15 * i, 20);
 
@@ -135,7 +159,7 @@ public class GameCanvas extends JPanel {
 
             g2.setColor(Color.green);
             g2.drawString("           Press Start to Play Again", 25, 300);
-
+            panel.getStartButton().setEnabled(true);
 
 
         }
@@ -149,6 +173,7 @@ public class GameCanvas extends JPanel {
             g2.drawString("The people of WaterVille are no more!", 25, 250);
             g2.setColor(Color.green);
             g2.drawString("           Press Start to Play Again", 25, 300);
+            panel.getStartButton().setEnabled(true);
 
         }
 

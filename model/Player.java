@@ -110,6 +110,7 @@ public abstract class Player implements IWaterHandler {
         return new Rectangle(x, y, image.getWidth(), image.getHeight());        
     }
 
+
     public void translate( int dx, int dy) {
 
         x += dx;

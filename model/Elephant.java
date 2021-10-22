@@ -2,8 +2,8 @@ package model;
 
 public class Elephant extends Player {
 
-    private final int MAX_SPEED = 2;
-    private final int WATER_CAPACITY = 3;
+    private final int MAX_SPEED = 5;
+    public final int WATER_CAPACITY = 4;
 
     String waterContainer = "trunk";
 

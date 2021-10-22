@@ -2,8 +2,8 @@ package model;
 
 public class Human extends Player {
     
-    private final int MAX_SPEED = 4;
-    private final int WATER_CAPACITY = 1;
+    private final int MAX_SPEED = 10;
+    public final int WATER_CAPACITY = 2;
 
     private String gender;
     private String waterContainer = "bucket";
@@ -55,6 +55,10 @@ public class Human extends Player {
         setCurrentWater(0);
         setHasWater(false);
         
+    }
+
+    public int getWATER_CAPACITY() {
+        return WATER_CAPACITY;
     }
 
     

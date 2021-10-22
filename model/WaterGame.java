@@ -60,8 +60,8 @@ public class WaterGame {
         this.currentWaterLvl = currentWaterLvl;
     }
 
-    public static void setScore(int score) {
-        score += score;
+    public void setScore(int score) {
+        this.score += score;
     }
 
     public void setTimeRemaining(int timeRemaining) {
